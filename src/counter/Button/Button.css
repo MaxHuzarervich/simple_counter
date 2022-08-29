@@ -1,0 +1,9 @@
+.button {
+    background: #282c34;
+    color: aliceblue;
+    border: none;
+    border-radius: 5px;
+    width: 35%;
+    height: 65%;
+    margin: 9px 5px 9px 25px;
+}

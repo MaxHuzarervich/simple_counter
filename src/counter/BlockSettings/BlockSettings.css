@@ -1,0 +1,32 @@
+.button {
+    justify-content: center;
+    align-items: center;
+}
+
+.settings {
+    border: 2px solid #282c34;
+    border-radius: 5px;
+    margin: 5%;
+    height: 170px;
+    font-size: 150%;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.settings input {
+    width: 25%;
+    border-radius: 5px;
+    border: 2px solid #282c34;
+    text-align: center;
+}
+
+.settings span {
+    margin: 25px;
+}
+
+
+
+

@@ -1,0 +1,55 @@
+.background-counter {
+    background-color: darkcyan;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter {
+    margin-left: 5%;
+    border: 2px solid #282c34;
+    width: 300px;
+    height: 250px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.number {
+    border: 2px solid #282c34;
+    border-radius: 5px;
+    margin: 5%;
+    height: 170px;
+    font-size: xx-large;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    border: 2px solid #282c34;
+    margin: 15px;
+    border-radius: 5px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+}
+
+.buttonDisabled {
+    background: #282c34;
+    color: aliceblue;
+    border: none;
+    border-radius: 5px;
+    width: 35%;
+    height: 65%;
+    margin: 9px 5px 9px 25px;
+    opacity: 40%;
+}
+
+.error {
+    color: red;
+}
