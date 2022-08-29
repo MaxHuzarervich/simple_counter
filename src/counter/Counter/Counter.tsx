@@ -10,26 +10,32 @@ type CounterType = {
     startValue: number
 }
 
-const error = 'incorrect value'
+const error = 'Incorrect value!'
 
 export const Counter = ({number, reset, increment, maxValue, startValue}: CounterType) => {
+
+    const conditionForIncButton = number === maxValue || maxValue === startValue || maxValue < 0 || startValue < 0
+
+    const conditionForResetButton = maxValue === startValue || maxValue < 0 || startValue < 0
+
     return (
         <div>
             <div className='counter'>
                 <div className='number'>
                     <div>
-                        {maxValue === startValue ? <div className='error'>{error}</div> : <div>{number}</div>}
+                        {maxValue === startValue || startValue < 0 || maxValue < 0 ? <div className='error'>{error}</div>
+                            : <div>{number === maxValue ? <div className='error'>{number}</div> : number}</div>}
                     </div>
                 </div>
                 <div className='buttons'>
-                    <div className={number === maxValue || maxValue === startValue ? 'buttonDisabled' : 'button'}>
+                    <div className={conditionForIncButton ? 'buttonDisabled' : 'button'}>
                         <Button
                             disabled={number === maxValue}
                             callBack={increment}
                             title='Inc'
                         />
                     </div>
-                    <div className={maxValue === startValue ? 'buttonDisabled' : 'button'}>
+                    <div className={conditionForResetButton ? 'buttonDisabled' : 'button'}>
                         <Button
                             disabled={number === 0}
                             callBack={reset}
