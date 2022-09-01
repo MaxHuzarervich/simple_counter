@@ -19,21 +19,41 @@ export const BlockSettings = ({
                                   SetStartValue
                               }: BlockSettingType) => {
 
+    const conditionForMaxValueInput = startValue >= maxValue || startValue < 0 ?
+        {border: '2px solid red', backgroundColor: 'red'} : undefined
+
+    const conditionForStartValueInput = maxValue === startValue || maxValue < 0 ?
+        {border: '2px solid red', backgroundColor: 'red'} : undefined
+
+    const conditionForButtonDisabled = startValue >= maxValue || startValue < 0 || maxValue < 0 ?
+        'buttonDisabled' : 'button'
+
     return (
         <div className='counter'>
             <div className={'settings'}>
                 <div>
                     <span>max value:</span>
-                    <input style={maxValue === startValue || maxValue < 0 ? {border:'2px solid red',backgroundColor:'red'} : undefined} onChange={ChangeMaxValue} value={maxValue} type='number'/>
+                    <input
+                        style={conditionForStartValueInput}
+                        onChange={ChangeMaxValue}
+                        value={maxValue}
+                        type='number'/>
                 </div>
                 <div>
                     <span>start value:</span>
-                    <input style={maxValue === startValue || startValue < 0 ? {border:'2px solid red',backgroundColor:'red'} : undefined} onChange={ChangeStartValue} value={startValue} type='number'/>
+                    <input
+                        style={conditionForMaxValueInput}
+                        onChange={ChangeStartValue}
+                        value={startValue}
+                        type='number'/>
                 </div>
             </div>
             <div className={'buttons'} style={{justifyContent: 'center', alignItems: 'center'}}>
-                <div className={startValue === maxValue || startValue < 0 || maxValue < 0 ? 'buttonDisabled' : 'button'}>
-                    <Button title='Set' disabled={maxValue === startValue} callBack={SetStartValue}/>
+                <div className={conditionForButtonDisabled}>
+                    <Button
+                        title='Set'
+                        disabled={maxValue === startValue}
+                        callBack={SetStartValue}/>
                 </div>
             </div>
         </div>

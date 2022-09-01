@@ -18,13 +18,15 @@ export const Counter = ({number, reset, increment, maxValue, startValue}: Counte
 
     const conditionForResetButton = maxValue === startValue || maxValue < 0 || startValue < 0
 
+    const conditionForCurrentNumber = maxValue === startValue || startValue < 0 || maxValue < 0 ? <div className='error'>{error}</div>
+        : <div>{number === maxValue ? <div className='error'>{number}</div> : number}</div>
+
     return (
         <div>
             <div className='counter'>
                 <div className='number'>
                     <div>
-                        {maxValue === startValue || startValue < 0 || maxValue < 0 ? <div className='error'>{error}</div>
-                            : <div>{number === maxValue ? <div className='error'>{number}</div> : number}</div>}
+                        {conditionForCurrentNumber}
                     </div>
                 </div>
                 <div className='buttons'>
