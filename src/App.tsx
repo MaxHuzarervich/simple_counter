@@ -1,13 +1,28 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import '././counter/Counter/Counter.css';
 import {Counter} from "./counter/Counter/Counter";
 import {BlockSettings} from "./counter/BlockSettings/BlockSettings";
 
 function App() {
 
-    let [number, setNumber] = useState(0)
+    let [number, setNumber] = useState<number>(0)
 
-    const Increment = () => setNumber(++number)
+    useEffect(() => {
+        let value = localStorage.getItem('counterValue')
+        if (value) {
+            let newValue = JSON.parse(value)
+            setNumber(newValue)
+        }
+
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('counterValue', JSON.stringify(number))
+    }, [number])
+
+    const Increment = () => {
+        setNumber(number + 1)
+    }
 
     const Reset = () => setNumber(0)
 
@@ -50,3 +65,27 @@ function App() {
 }
 
 export default App;
+
+export const Num = () => {
+    const [value, setValue] = useState(0)
+    useEffect(() => {
+        debugger
+        let valueAsString = localStorage.getItem('Value')
+        if (valueAsString) {
+            let newValue = JSON.parse(valueAsString)
+            setValue(newValue)
+        }
+    }, [])
+    useEffect(() => {
+        debugger
+        localStorage.setItem('Value', JSON.stringify(value))
+    }, [value])
+    const inc = () => setValue(value + 1)
+
+    return (
+        <div>
+            {value}
+            <button onClick={inc}>plus</button>
+        </div>
+    )
+}
